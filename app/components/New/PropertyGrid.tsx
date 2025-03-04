@@ -58,7 +58,7 @@ const PropertyGridItem = ({ bhk, location, estimatedPrice, image }) => {
           ease: "easeInOut",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-200 opacity-75 blur-lg animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-200 opacity-75 blur-lg"></div>
         <img 
           src={image} 
           alt="Property" 
