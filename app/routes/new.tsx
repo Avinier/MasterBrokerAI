@@ -3,6 +3,7 @@ import OverviewAnalysis from "~/components/New/OverviewAnalysis";
 import RealTimeSTT from "~/components/New/RealTimeSTT";
 import AIGenVoice from "~/components/New/AIGenVoice";
 import PropertyGrid from "~/components/New/PropertyGrid";
+import RentAgreementGrid from "~/components//New/RentAgreement";
 import SkuemorphicContainer from "~/components/UI/SkuemorphicContainer";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -32,14 +33,13 @@ const NewRoute = () => {
       
       {/* Bottom Row - Two Containers */}
       <div className="flex w-full h-[15%] space-x-4 mt-4">
-        <div className="w-1/2 h-full">
+        <div className="w-[1000px] h-full">
           <PropertyGrid />
         </div>
-        <div className="w-1/2 h-full">
-          {/* Placeholder for the other big container */}
-          <div className="w-full h-full bg-white/10 rounded-lg">
-            {/* Add your component here */}
-          </div>
+        <div className="w-1/2 h-full space-x-4 mt-4">
+            <div className="w-full h-full bg-white/10 rounded-lg p-4">
+                <RentAgreementGrid />
+            </div>
         </div>
       </div>
     </div>
