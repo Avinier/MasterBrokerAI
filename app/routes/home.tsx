@@ -4,6 +4,7 @@ import { Send, Loader, User, Atom, File, ChevronLeft } from 'lucide-react';
 import AnimatedBackground from '~/components/UI/AnimatedBackground';
 import GlassContainer from '~/components/UI/GlassContainer';
 import { motion } from 'framer-motion';
+import ClientNavigationButtons from '~/components/Homepage/ClientNavigationButtons';
 
 const Chat = () => {
 	const [isFocused, setIsFocused] = useState(false);
@@ -104,15 +105,11 @@ const Chat = () => {
 	};
 	return (
 		<AnimatedBackground className="min-h-screen flex items-center justify-center">
-			<GlassContainer className="w-[90vw] h-[90vh] overflow-auto">
 				<div className="p-6">
-        			<Link to="/" className="absolute top-4 left-4 inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 text-grey/50 text-sm transition-all duration-300 hover:bg-white/20 hover:border-white/30">
-            			<ChevronLeft className="w-4 h-4 mr-2" /> Back
-          			</Link>
 					<h1 className="text-4xl font-semibold mb-2 text-center font-subheading text-grey">
-						UltraFounder.AI Chat
+						MasterBroker.AI 
 					</h1>
-					<h3 className='text-lg font-subheading mb-8 text-center text-grey/50'>Analyse and Research on your Pitch Deck and Business Plan</h3>
+					<h3 className='text-lg font-subheading mb-8 text-center text-grey/50'>Automate your whole process of Real Estate Broking, with AI</h3>
 					{/* Chat content will go here */}
 					<div className="flex flex-col h-full">
 						{/* Message Display Area */}
@@ -136,7 +133,7 @@ const Chat = () => {
 											${
 												message.role === 'user'
 													? 'bg-white/10 border border-white/20 text-grey font-subheading'
-													: 'bg-gradient-to-r from-portage to-portage/70 border border-portage/50 text-white font-subheading'
+													: 'bg-gradient-to-r from-portage to-portage/70 border border-portage/50 text-grey font-subheading'
 											}
 										`}
 										initial={{ opacity: 0, y: 10 }}
@@ -150,7 +147,7 @@ const Chat = () => {
 							))}
 							{isLoading && (
 								<div className="flex justify-end mb-4">
-									<div className="max-w-[60%] p-4 rounded-xl bg-gradient-to-r from-portage to-portage/70 border border-portage/50 text-white flex items-center">
+									<div className="max-w-[60%] p-4 rounded-xl bg-gradient-to-r from-portage to-portage/70 border border-portage/50 text-grey flex items-center">
 										<Loader className="animate-spin mr-2" /> Typing...
 									</div>
 								</div>
@@ -158,107 +155,10 @@ const Chat = () => {
 							<div ref={messagesEndRef} />
 						</div>
 
-						{/* Input Area */}
-						<form
-							onSubmit={handleSubmit}
-							className={`
-								relative
-								mt-4
-								backdrop-blur-xl
-								bg-white/35
-								rounded-xl
-								border
-								border-white/40
-								transition-all
-								duration-500
-								before:absolute
-								before:inset-0
-								before:backdrop-blur-xl
-								before:bg-white/5
-								before:rounded-xl
-								before:-z-10
-								${isFocused ? 'shadow-[0_0_25px_rgba(255,255,255,0.6)] border-white/60' : 'hover:border-white/50 hover:bg-white/20'}
-							`}
-						>
-							<div className="flex items-center px-6 py-4">
-								
-								<input
-									type="text"
-									placeholder="Type your message..."
-									value={searchQuery}
-									onChange={(e) => setSearchQuery(e.target.value)}
-									className="
-										w-full
-										ml-4
-										border-none
-										bg-transparent
-										font-subheading
-										text-grey
-										placeholder-grey/50
-										focus:outline-none
-										font-light
-										text-lg
-									"
-									onFocus={() => setIsFocused(true)}
-									onBlur={() => setIsFocused(false)}
-								/>
-								{/* File Input */}
-								<label htmlFor="file-upload" className="cursor-pointer ml-2 relative group">
-									<File className="w-6 h-6 text-white" />
-									{/* Helper Container for File Upload */}
-									<div className="absolute hidden group-hover:block bg-white/90 text-grey text-xs px-4 py-2 rounded-md shadow-lg -top-12 left-1/2 -translate-x-1/2 transition-all duration-300">
-										upload file
-									</div>
-								</label>
-								<input
-									type="file"
-									id="file-upload"
-									className="hidden"
-									onChange={handleFileChange}
-								/>
-								{/* End File Input */}
-								<button
-									type="submit"
-									className="
-										ml-4
-										p-1.5
-										rounded-full
-										bg-white/10
-										border
-										border-white/20
-										transition-all
-										duration-300
-										hover:bg-white/20
-										hover:border-white/30
-										hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]
-										group
-										disabled:opacity-50
-										disabled:cursor-not-allowed
-										relative
-									"
-									disabled={!searchQuery.trim() || isLoading}
-								>
-									<Send
-										className={`
-											w-5
-											h-5
-											text-white
-											group-hover:text-grey/70
-											transition-colors
-											duration-300
-											${isLoading ? 'animate-pulse' : ''}
-										`}
-									/>
-									{/* Helper Container for Send Button */}
-									<div className="absolute hidden group-hover:block bg-white/90 text-grey text-xs px-4 py-2 rounded-md shadow-lg -top-12 left-1/2 -translate-x-1/2 transition-all duration-300">
-										send
-									</div>
-								</button>
-							</div>
-						</form>
+			{/* Buttons */}
+      <ClientNavigationButtons/>
 					</div>
 				</div>
-		</GlassContainer>
 </AnimatedBackground>
 	);
 };

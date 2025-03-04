@@ -88,12 +88,13 @@ export default {
             '--y-5': '26%',
             '--c-5': 'hsla(23.823529411764703, 77%, 74%, 0.8)',
             '--x-5': '0%',
-          }
+          },
         }
       },
       animation: {
         glow: 'glow 0.5s linear infinite',
-        'hero-gradient-animation': 'hero-gradient-animation 5s linear infinite alternate', // Added hero-gradient-animation
+        'hero-gradient-animation': 'hero-gradient-animation 5s linear infinite alternate',
+        'gradient-x': 'gradient-x 3s ease infinite',
       },
     },
   },
