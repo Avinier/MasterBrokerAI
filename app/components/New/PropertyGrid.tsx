@@ -3,45 +3,57 @@ import SkuemorphicContainer from "~/components/UI/SkuemorphicContainer";
 import { motion } from "framer-motion";
 import { Home } from "lucide-react";
 
-// Sample property data (only first 6 used for 3x2 grid)
 const propertyData = [
   {
     bhk: "2 BHK",
-    location: "Koramangala, Bangalore",
-    estimatedPrice: "₹1.2 Crore",
-    image: "/api/placeholder/300/200"
+    location: "Andheri, Mumbai",
+    estimatedPrice: "₹1.05 Crore",
+    image: "/images/test.jpg",
   },
   {
     bhk: "3 BHK",
     location: "Powai, Mumbai",
-    estimatedPrice: "₹2.5 Crore",
-    image: "/api/placeholder/300/200"
+    estimatedPrice: "₹1.2 Crore",
+    image: "/images/powai.jpg",
   },
   {
     bhk: "1 BHK",
-    location: "Sector 62, Noida",
-    estimatedPrice: "₹75 Lakh",
-    image: "/api/placeholder/300/200"
-  },
-  {
-    bhk: "4 BHK",
-    location: "Jubilee Hills, Hyderabad",
-    estimatedPrice: "₹3.8 Crore",
-    image: "/api/placeholder/300/200"
+    location: "Bandra, Mumbai",
+    estimatedPrice: "₹1.1 Crore",
+    image: "/images/bandra.jpg",
   },
   {
     bhk: "2 BHK",
-    location: "Indiranagar, Bangalore",
-    estimatedPrice: "₹1.8 Crore",
-    image: "/api/placeholder/300/200"
+    location: "Worli, Mumbai",
+    estimatedPrice: "₹1.39 Crore",
+    image: "/images/worli.jpg",
   },
   {
     bhk: "3 BHK",
-    location: "Andheri, Mumbai",
-    estimatedPrice: "₹2.9 Crore",
-    image: "/api/placeholder/300/200"
-  }
+    location: "Juhu, Mumbai",
+    estimatedPrice: "₹1.4 Crore",
+    image: "/images/juhu.jpg",
+  },
+  {
+    bhk: "1 BHK",
+    location: "Chembur, Mumbai",
+    estimatedPrice: "₹1.25 Crore",
+    image: "/images/chembhue.jpg",
+  },
+  {
+    bhk: "2 BHK",
+    location: "Kandivali, Mumbai",
+    estimatedPrice: "₹1.15 Crore",
+    image: "/images/test.jpg",
+  },
+  {
+    bhk: "3 BHK",
+    location: "Borivali, Mumbai",
+    estimatedPrice: "₹1.3 Crore",
+    image: "/images/test.jpg",
+  },
 ];
+
 
 const PropertyGridItem = ({ bhk, location, estimatedPrice, image }) => {
   return (
