@@ -20,26 +20,26 @@ const notifications: Notification[] = [
 
 const NotificationList: React.FC = () => {
   return (
-    <div className="max-h-80 w-80 overflow-y-auto space-y-4 p-4">
+    <div className="max-h-80 w-96 overflow-y-auto space-y-4 p-4">
       {notifications.length > 0 ? (
         notifications.map((notif) => (
           <div 
             key={notif.id} 
             className="text-white text-lg opacity-90 border-b border-white/20 pb-3 last:border-b-0 flex justify-between items-center"
           >
-            <div>
-              {notif.text} <span className="text-sm opacity-70">{notif.time}</span>
+            <div className="w-3/4">
+              {notif.text} <span className="text-sm opacity-70 block">{notif.time}</span>
             </div>
             {notif.hasActions && (
-              <div className="flex space-x-3">
-                {/* Accept Button */}
-                <SkuemorphicContainer className="w-12 h-12 flex items-center justify-center cursor-pointer">
-                  <Check className="text-green-400 w-6 h-6" />
+              <div className="flex space-x-4">
+                {/* Accept Button - Increased Size */}
+                <SkuemorphicContainer className="w-14 h-14 flex items-center justify-center cursor-pointer">
+                  <Check className="text-green-400 w-8 h-8" />
                 </SkuemorphicContainer>
 
-                {/* Reject Button */}
-                <SkuemorphicContainer className="w-12 h-12 flex items-center justify-center cursor-pointer">
-                  <X className="text-red-400 w-6 h-6" />
+                {/* Reject Button - Increased Size */}
+                <SkuemorphicContainer className="w-14 h-14 flex items-center justify-center cursor-pointer">
+                  <X className="text-red-400 w-8 h-8" />
                 </SkuemorphicContainer>
               </div>
             )}

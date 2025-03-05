@@ -31,10 +31,10 @@ const NotificationMenu = () => {
         </SkuemorphicContainer>
       </div>
 
-      {/* Dropdown Menu */}
+      {/* Dropdown Menu - Increased Width */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-white/20 backdrop-blur-md border border-white/30 rounded-lg shadow-lg p-4 space-y-2 z-50">
-          <p className="text-white text-lg font-semibold">Notifications</p>
+        <div className="absolute right-0 mt-2 w-96 bg-white/20 backdrop-blur-md border border-white/30 rounded-lg shadow-lg p-5 space-y-3 z-50">
+          <p className="text-white text-xl font-semibold">Notifications</p>
           <NotificationList />
         </div>
       )}
