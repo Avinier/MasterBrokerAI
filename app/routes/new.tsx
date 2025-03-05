@@ -5,6 +5,7 @@ import AIGenVoice from "~/components/New/AIGenVoice";
 import PropertyGrid from "~/components/New/PropertyGrid";
 import RentAgreementGrid from "~/components//New/RentAgreement";
 import SkuemorphicContainer from "~/components/UI/SkuemorphicContainer";
+import GenerateLeadsButton from "~/components/New/GenerateLeeds";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -36,9 +37,9 @@ const NewRoute = () => {
         <div className="w-[1000px] h-full">
           <PropertyGrid />
         </div>
-        <div className="w-1/2 h-full space-x-4 mt-4">
-            <div className="w-full h-full bg-white/10 rounded-lg p-4">
-                <RentAgreementGrid />
+        <div className="w-1/2 h-[500px] space-x-4 mt-4">
+            <div className="w-full h-full bg-white/10 rounded-lg p-4 flex justify-center items-center">
+                <GenerateLeadsButton />
             </div>
         </div>
       </div>
