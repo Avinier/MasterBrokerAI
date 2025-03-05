@@ -1,7 +1,6 @@
 /*TODO:
 - integration, rt streaming
 - map fixing
-- homepage ui addition
 - loading state of overview
 - disable enable ai voicegen
  */
@@ -71,7 +70,7 @@ const BuildingSilhouettes = () => {
 	  </div>
 	);
   };
-  
+
 const Chat = () => {
 	const [isFocused, setIsFocused] = useState(false);
 	const [searchQuery, setSearchQuery] = useState('');
