@@ -68,7 +68,7 @@ const OverviewAnalysis = () => {
                 <p>"I'm looking for a spacious 3BHK in South Mumbai with a sea view. My budget is around ₹8-10 crores, but I can stretch it for the right property. It should have modern amenities and be close to good schools."</p>
               </div>
               <div className="border-l-4 border-orange-500 pl-3">
-                <p className="font-medium">Broker:</p>
+                <p className="font-medium">You:</p>
                 <p>"We have some excellent options in Oberoi Sky City and Lodha Bellissimo. Both offer sea views, premium amenities, and are close to international schools. When would you like to schedule a visit?"</p>
               </div>
             </div>

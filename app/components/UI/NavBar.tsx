@@ -1,28 +1,28 @@
 import React from "react";
-import { Bell, User } from "lucide-react";
+import { User } from "lucide-react";
+import { Link } from "react-router-dom";
 import SkuemorphicContainer from "~/components/UI/SkuemorphicContainer";
+import NotificationMenu from "~/components/UI/NotificationMenu"; // Import the Notification Component
 
 const Navbar = () => {
   return (
-    <SkuemorphicContainer className="w-full flex items-center justify-between px-6 py-4">
-      {/* Left: Brand Name */}
-      <h1 className="text-white text-2xl font-bold font-subheading">
+    <div className="w-full h-24 bg-white/15 border-b border-white/20 flex items-center justify-between px-8 shadow-[0_10px_25px_-10px_rgba(255,255,255,0.1)]">
+      {/* Left: Clickable Brand Name */}
+      <Link to="/home" className="text-white text-4xl font-subheading hover:opacity-80 transition-opacity">
         MasterBroker.AI
-      </h1>
+      </Link>
 
-      {/* Right: Icons */}
-      <div className="flex items-center space-x-6">
-        {/* Notification Bell */}
-        <button className="relative hover:scale-110 transition-transform duration-200">
-          <Bell className="text-white w-6 h-6" />
-        </button>
+      {/* Right: Icons inside Skeuomorphic Containers */}
+      <div className="flex items-center space-x-8">
+        {/* Notification Menu */}
+        <NotificationMenu />
 
         {/* Profile Icon */}
-        <button className="hover:scale-110 transition-transform duration-200">
-          <User className="text-white w-6 h-6" />
-        </button>
+        <SkuemorphicContainer className="w-16 h-16 flex items-center justify-center cursor-pointer">
+          <User className="text-white w-8 h-8" />
+        </SkuemorphicContainer>
       </div>
-    </SkuemorphicContainer>
+    </div>
   );
 };
 
