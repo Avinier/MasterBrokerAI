@@ -6,16 +6,16 @@ import { Building, MapPin, Home, IndianRupee } from "lucide-react"; // Import ic
 import SkuemorphicContainer from "~/components/UI/SkuemorphicContainer";
 
 const clients = [
-  { clientName: "Rahul Sharma", location: "Kandivali, Mumbai", type: "Rent", budget: "₹20,000/month", bhk: "2 BHK" },
-  { clientName: "Priya Patel", location: "Andheri, Mumbai", type: "Purchase", budget: "₹1,50,00,000", bhk: "3 BHK" },
-  { clientName: "Aarav Singh", location: "Borivali, Mumbai", type: "Rent", budget: "₹15,000/month", bhk: "1 BHK" },
-  { clientName: "Ananya Gupta", location: "Ghatkopar, Mumbai", type: "Purchase", budget: "₹1,20,00,000", bhk: "2 BHK" },
-  { clientName: "Vihaan Mehta", location: "Malad, Mumbai", type: "Rent", budget: "₹18,000/month", bhk: "Studio" },
-  { clientName: "Isha Reddy", location: "Powai, Mumbai", type: "Purchase", budget: "₹2,00,00,000", bhk: "4 BHK" },
-  { clientName: "Arjun Kumar", location: "Thane, Mumbai", type: "Rent", budget: "₹22,000/month", bhk: "3 BHK" },
-  { clientName: "Saanvi Joshi", location: "Chembur, Mumbai", type: "Purchase", budget: "₹1,80,00,000", bhk: "3 BHK" },
-  { clientName: "Aditya Desai", location: "Dadar, Mumbai", type: "Rent", budget: "₹17,000/month", bhk: "2 BHK" },
-  { clientName: "Anika Choudhary", location: "Vashi, Navi Mumbai", type: "Purchase", budget: "₹1,40,00,000", bhk: "2 BHK" },
+  { clientName: "John Doe", location: "New York", type: "Rent", budget: "₹2000/month", bhk: "2 BHK" },
+  { clientName: "Alice Smith", location: "Los Angeles", type: "Purchase", budget: "₹500,000", bhk: "3 BHK" },
+  { clientName: "Bob Johnson", location: "Chicago", type: "Rent", budget: "₹1500/month", bhk: "1 BHK" },
+  { clientName: "Emma Brown", location: "Houston", type: "Purchase", budget: "₹350,000", bhk: "2 BHK" },
+  { clientName: "Michael Lee", location: "Miami", type: "Rent", budget: "₹1800/month", bhk: "Studio" },
+  { clientName: "Sophia Wilson", location: "San Francisco", type: "Purchase", budget: "₹800,000", bhk: "4 BHK" },
+  { clientName: "David White", location: "Seattle", type: "Rent", budget: "₹2200/month", bhk: "3 BHK" },
+  { clientName: "Olivia Miller", location: "Boston", type: "Purchase", budget: "₹600,000", bhk: "3 BHK" },
+  { clientName: "William Davis", location: "Denver", type: "Rent", budget: "₹1700/month", bhk: "2 BHK" },
+  { clientName: "Ethan Martinez", location: "Dallas", type: "Purchase", budget: "₹450,000", bhk: "2 BHK" },
 ];
 
 const Dashboard: React.FC = () => {
@@ -45,9 +45,9 @@ const Dashboard: React.FC = () => {
         {/* Grid Layout for Client Cards */}
         <SkuemorphicContainer className={`
           relative
-          bg-white/70
+          bg-white/15
           border
-          border-white/70
+          border-white/20
           overflow-hidden
           shadow-[0_10px_25px_-5px_rgba(255,255,255,0.1),_inset_0_2px_4px_rgba(255,255,255,0.1)]
           hover:shadow-[0_15px_30px_-6px_rgba(255,255,255,0.2),_inset_0_4px_6px_rgba(255,255,255,0.2)]
@@ -61,9 +61,9 @@ const Dashboard: React.FC = () => {
               absolute
               inset-0
               bg-gradient-to-r
-              from-[#E98AF0]/90
-              via-[#8A8FF0]/90
-              to-[#8AF096]/90
+              from-[#E98AF0]/30
+              via-[#8A8FF0]/30
+              to-[#8AF096]/30
               opacity-0
               group-hover:opacity-100
               transition-opacity
@@ -97,7 +97,7 @@ const Dashboard: React.FC = () => {
                 <Building className="w-8 h-8 text-blue-600" />
                 <h3 className="text-2xl font-semibold text-grey-500">{client.clientName}</h3>
               </div>
-              <SkuemorphicContainer className="bg-white/15 space-y-3">
+              <SkuemorphicContainer className=" space-y-3">
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-6 h-6 text-gray-500" />
                   <p className="text-lg text-gray-700">Location: {client.location}</p>
