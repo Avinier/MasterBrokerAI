@@ -1,7 +1,3 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-
 import Navbar from '~/components/UI/NavBar';
 import OverviewAnalysis from '~/components/New/OverviewAnalysis';
 import RealTimeSTT from '~/components/New/RealTimeSTT';
