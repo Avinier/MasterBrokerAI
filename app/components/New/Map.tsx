@@ -1,100 +1,77 @@
-import { useEffect, useRef, useState } from 'react'
-import { LoadScript } from '@react-google-maps/api'
+import { useEffect, useRef } from 'react'
 
-const MAP_CONTAINER_STYLE = {
-  width: '100%',
-  height: '500px'
-}
+const Map = () => {
+  const mapContainerRef = useRef<HTMLDivElement>(null)
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined' && mapContainerRef.current) {
+      // Initialize map with brown theme
+      const map = document.createElement('div')
+      map.style.width = '100%'
+      map.style.height = '100%'
+      map.innerHTML = `
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=72.79632568359376%2C18.94157767436867%2C73.00445556640625%2C19.200060747686402&layer=hot&marker=19.0760%2C72.8777&
+          ${Array.from({length: 5}, (_, i) => 
+            `marker=${[
+              // Mumbai landmarks with labels
+              '19.0760,72.8777,Mumbai+City+Center',
+              '18.9750,72.8258,Colaba',
+              '19.0330,72.8476,Bandra+KC',
+              '19.2147,72.9863,Sanjay+Gandhi+Park',
+              '19.1587,72.8417,International+Airport'
+            ][i]}`
+          ).join('&')}"
+          style="filter: sepia(0.3) saturate(1.4) hue-rotate(340deg);"
+        ></iframe>
+      `
+      
+      // Add custom controls
+      const controls = document.createElement('div')
+      controls.innerHTML = `
+        <div style="position: absolute; bottom: 20px; right: 20px; z-index: 1000;">
+          <a 
+            href="https://www.openstreetmap.org/#map=13/19.0760/72.8777" 
+            target="_blank"
+            style="
+              background: #6b4f3a;
+              color: #f5e6d3;
+              padding: 8px 16px;
+              border-radius: 8px;
+              text-decoration: none;
+              font-family: sans-serif;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            "
+          >
+            Open Full Map
+          </a>
+        </div>
+      `
 
-const MUMBAI_CENTER = {
-  lat: 19.0760,
-  lng: 72.8777
-}
-
-const BROWN_MAP_STYLES = [
-  {
-    featureType: 'all',
-    elementType: 'geometry',
-    stylers: [{ color: '#f5e6d3' }] // Light brown base
-  },
-  {
-    featureType: 'road',
-    elementType: 'labels.text.stroke',
-    stylers: [{ color: '#4b382a' }] // Dark brown text outline
-  },
-  {
-    featureType: 'water',
-    elementType: 'geometry.fill',
-    stylers: [{ color: '#d4c4ab' }] // Beige water
-  },
-  {
-    featureType: 'poi',
-    elementType: 'labels',
-    stylers: [{ visibility: 'off' }]
-  }
-]
-
-const MumbaiMap = () => {
-  const mapRef = useRef(null)
-  const [isLoaded, setIsLoaded] = useState(false)
+      mapContainerRef.current.appendChild(map)
+      mapContainerRef.current.appendChild(controls)
+    }
+  }, [])
 
   return (
     <div className="w-1/2 h-[500px] space-x-4 mt-4 relative">
-      {/* Glow effect */}
+      {/* Glowing overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-amber-700/20 via-amber-600/30 to-amber-900/40 animate-pulse blur-xl rounded-xl z-0" />
       
-      <div className="w-full h-full bg-white/10 rounded-lg p-4 flex justify-center items-center relative z-10">
-        <LoadScript
-          googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY"
-          onLoad={() => setIsLoaded(true)}
-          onError={() => console.error('Failed to load Google Maps')}
-        >
-          {isLoaded && (
-            <GoogleMap
-              mapContainerStyle={MAP_CONTAINER_STYLE}
-              center={MUMBAI_CENTER}
-              zoom={12}
-              options={{
-                styles: BROWN_MAP_STYLES,
-                disableDefaultUI: true,
-                zoomControl: true,
-                backgroundColor: '#2d2218'
-              }}
-            >
-              {/* Custom Marker with Brown Theme */}
-              <Marker
-                position={MUMBAI_CENTER}
-                icon={{
-                  path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z',
-                  fillColor: '#6b4f3a',
-                  fillOpacity: 1,
-                  strokeColor: '#4b382a',
-                  strokeWeight: 2,
-                  scale: 1.5
-                }}
-              >
-                <InfoWindow>
-                  <div className="bg-amber-100 p-2 rounded-lg text-brown-800">
-                    <strong>Mumbai Central</strong>
-                  </div>
-                </InfoWindow>
-              </Marker>
-
-              {/* Add more Mumbai landmarks */}
-              <Marker
-                position={{ lat: 18.9750, lng: 72.8258 }}
-                options={{
-                  icon: {
-                    url: 'data:image/svg+xml;utf-8,<svg ...></svg>', // Custom SVG
-                  }
-                }}
-              />
-            </GoogleMap>
-          )}
-        </LoadScript>
-      </div>
+      {/* Map container */}
+      <div 
+        ref={mapContainerRef}
+        className="w-full h-full bg-white/10 rounded-xl overflow-hidden relative z-10"
+        style={{ minHeight: '500px' }}
+      />
     </div>
   )
 }
 
-export default MumbaiMap
+export default Map
