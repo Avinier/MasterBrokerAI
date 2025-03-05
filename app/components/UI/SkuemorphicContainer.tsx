@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 interface SkuemorphicContainerProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const SkuemorphicContainer: React.FC<SkuemorphicContainerProps> = ({ children, className }) => {
+const SkuemorphicContainer = forwardRef<HTMLDivElement, SkuemorphicContainerProps>(({ children, className }, ref) => {
   return (
     <div
+      ref={ref}
       className={`
         relative
         rounded-2xl
@@ -25,6 +26,8 @@ const SkuemorphicContainer: React.FC<SkuemorphicContainerProps> = ({ children, c
       {children}
     </div>
   );
-};
+});
+
+SkuemorphicContainer.displayName = 'SkuemorphicContainer';
 
 export default SkuemorphicContainer;

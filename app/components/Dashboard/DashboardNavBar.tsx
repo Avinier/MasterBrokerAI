@@ -1,6 +1,6 @@
 import React from "react";
 import { User, Bell } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@remix-run/react";
 import GlassContainer from "~/components/UI/GlassContainer"; // Update the import
 
 const DashboardNavbar = () => {
