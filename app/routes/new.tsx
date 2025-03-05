@@ -7,7 +7,7 @@ import OverviewAnalysis from '~/components/New/OverviewAnalysis';
 import RealTimeSTT from '~/components/New/RealTimeSTT';
 import AIGenVoice from '~/components/New/AIGenVoice';
 import PropertyGrid from '~/components/New/PropertyGrid';
-import GenerateLeadsButton from '~/components/New/GenerateLeeds';
+import Map from '~/components/New/Map';
 import SkuemorphicContainer from '~/components/UI/SkuemorphicContainer';
 
 const NewRoute = () => {
@@ -34,11 +34,14 @@ const NewRoute = () => {
         {/* Bottom Row - Two Containers */}
         <div className="flex w-full h-[15%] space-x-4 mt-4">
           <div className="w-[1000px] h-full">
-            <PropertyGrid />
+          <h2 className='text-4xl font-bold font-subheading bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent'>
+            Best Recommended Properties
+          </h2>
+          <PropertyGrid />
           </div>
           <div className="w-1/2 h-[500px] space-x-4 mt-4">
             <div className="w-full h-full bg-white/10 rounded-lg p-4 flex justify-center items-center">
-              <GenerateLeadsButton />
+              <Map />
             </div>
           </div>
         </div>

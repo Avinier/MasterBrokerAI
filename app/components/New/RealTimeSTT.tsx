@@ -29,107 +29,123 @@ const RealTimeSTT = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 animate-pulse blur-2xl" />
       
       {isPhoneClicked && (
-        <div className="text-center space-y-2 z-10">
-          <h2 className='text-3xl font-bold font-subheading bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent'>
-            Live Conversation Analysis
-          </h2>
-          <p className="text-gray-400 font-subheading">Real-time client communication</p>
-        </div>
-      )}
+  <div className="flex flex-col items-center justify-center w-full h-full relative z-10">
+    <div className="text-center space-y-2 mb-4">
+      <h2 className='text-3xl font-bold font-subheading bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent'>
+        Live Conversation Analysis
+      </h2>
+      <p className="text-gray-400 font-subheading">Real-time client communication</p>
+    </div>
 
+    <div className="w-full px-4 overflow-y-auto max-h-[calc(100%-150px)]">
       <AnimatePresence>
-        {!isPhoneClicked && (
-          <motion.button 
-            onClick={handlePhoneClick}
-            initial={{ scale: 1 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="absolute z-10"
-          >
-            <motion.div
-              className="relative rounded-full bg-cyan-500 h-24 w-24 flex items-center justify-center shadow-lg"
-              animate={{
-                scale: [1, 1.2, 1],
-                boxShadow: [
-                  '0 0 0px rgba(16, 185, 129, 0)',
-                  '0 0 20px rgba(16, 185, 129, 0.6)',
-                  '0 0 40px rgba(16, 185, 129, 0.4)',
-                  '0 0 60px rgba(16, 185, 129, 0.6)',
-                  '0 0 0px rgba(16, 185, 129, 0)'
-                ]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-75 blur-xl animate-pulse"></div>
-              <Phone className="text-white h-12 w-12 relative z-10" />
-            </motion.div>
-          </motion.button>
+        {isRecording && (
+          <div className="flex flex-col items-start w-full z-10">
+            {messages.map((message, index) => (
+              <motion.div
+                key={message.id}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ 
+                  duration: 0.4, 
+                  type: "spring", 
+                  stiffness: 100 
+                }}
+                className={`
+                  flex 
+                  ${index % 2 === 0 ? 'justify-start' : 'justify-end'}
+                  w-full
+                  mb-4
+                `}
+              >
+                <div
+                  className={`
+                    relative 
+                    w-full
+                    rounded-xl 
+                    p-4 
+                    transition-all 
+                    duration-300 
+                    ${message.sender === 'assistant' 
+                      ? 'bg-gradient-to-br from-cyan-500 via-emerald-500 to-emerald-400 animate-pulse-glow-cyan' 
+                      : 'bg-gradient-to-br from-gray-700 via-gray-600 to-gray-500'}
+                    text-white 
+                    shadow-xl 
+                    hover:scale-[1.01] 
+                    transform 
+                    ease-in-out
+                    font-subheading 
+                    tracking-wide 
+                  `}
+                >
+                  {message.text}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         )}
       </AnimatePresence>
+    </div>
 
-      {isPhoneClicked && (
-        <div className="absolute bottom-0 flex space-x-4 mb-8 z-10">
-          <motion.button
-            onClick={handleStartRecording}
-            disabled={isRecording}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className={`
-              relative rounded-full h-12 w-12 flex items-center justify-center shadow-md hover:shadow-lg
-              ${isRecording 
-                ? 'bg-cyan-300 cursor-not-allowed opacity-50' 
-                : 'bg-cyan-500 hover:bg-cyan-600'
-              }
-            `}
-          >
-            <div className={`
-              absolute inset-0 rounded-full 
-              ${isRecording 
-                ? 'bg-cyan-300 opacity-30' 
-                : 'bg-cyan-400 opacity-50 blur-xl animate-pulse'
-              }
-            `}></div>
-            <PlayCircle className={`
-              text-white h-6 w-6 relative z-10
-              ${isRecording ? 'opacity-50' : ''}
-            `} />
-          </motion.button>
+    <div className="absolute bottom-0 flex space-x-4 mb-8 z-10">
+      <motion.button
+        onClick={handleStartRecording}
+        disabled={isRecording}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className={`
+          relative rounded-full h-12 w-12 flex items-center justify-center shadow-md hover:shadow-lg
+          ${isRecording 
+            ? 'bg-cyan-300 cursor-not-allowed opacity-50' 
+            : 'bg-cyan-500 hover:bg-cyan-600'
+          }
+        `}
+      >
+        <div className={`
+          absolute inset-0 rounded-full 
+          ${isRecording 
+            ? 'bg-cyan-300 opacity-30' 
+            : 'bg-cyan-400 opacity-50 blur-xl animate-pulse'
+          }
+        `}></div>
+        <PlayCircle className={`
+          text-white h-6 w-6 relative z-10
+          ${isRecording ? 'opacity-50' : ''}
+        `} />
+      </motion.button>
 
-          <motion.button
-            onClick={handleStopRecording}
-            disabled={!isRecording}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className={`
-              relative rounded-full h-12 w-12 flex items-center justify-center shadow-md hover:shadow-lg
-              ${!isRecording 
-                ? 'bg-emerald-300 cursor-not-allowed opacity-50' 
-                : 'bg-emerald-500 hover:bg-emerald-600'
-              }
-            `}
-          >
-            <div className={`
-              absolute inset-0 rounded-full 
-              ${!isRecording 
-                ? 'bg-emerald-300 opacity-30' 
-                : 'bg-emerald-400 opacity-50 blur-xl animate-pulse'
-              }
-            `}></div>
-            <StopCircle className={`
-              text-white h-6 w-6 relative z-10
-              ${!isRecording ? 'opacity-50' : ''}
-            `} />
-          </motion.button>
-        </div>
-      )}
+      <motion.button
+        onClick={handleStopRecording}
+        disabled={!isRecording}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.1 }}
+        className={`
+          relative rounded-full h-12 w-12 flex items-center justify-center shadow-md hover:shadow-lg
+          ${!isRecording 
+            ? 'bg-emerald-300 cursor-not-allowed opacity-50' 
+            : 'bg-emerald-500 hover:bg-emerald-600'
+          }
+        `}
+      >
+        <div className={`
+          absolute inset-0 rounded-full 
+          ${!isRecording 
+            ? 'bg-emerald-300 opacity-30' 
+            : 'bg-emerald-400 opacity-50 blur-xl animate-pulse'
+          }
+        `}></div>
+        <StopCircle className={`
+          text-white h-6 w-6 relative z-10
+          ${!isRecording ? 'opacity-50' : ''}
+        `} />
+      </motion.button>
+    </div>
+  </div>
+)}
 
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isRecording && (
           <div className="flex flex-col items-start mt-4 w-full px-4 z-10">
             {messages.map((message, index) => (
@@ -175,7 +191,7 @@ const RealTimeSTT = () => {
             ))}
           </div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </SkuemorphicContainer>
   );
 };
