@@ -8,7 +8,7 @@ import SkuemorphicContainer from '~/components/UI/SkuemorphicContainer';
 
 const NewRoute = () => {
   return (
-    <div className="flex flex-col bg-gradient-to-br from-purple-900 to-blue-900 relative overflow-hidden min-h-screen">
+    <div className="flex flex-col bg-gradient-to-br from-[#1d0430] to-[#03123d] relative overflow-hidden min-h-screen">
       {/* Navbar */}
       <Navbar />
       
@@ -30,9 +30,6 @@ const NewRoute = () => {
         {/* Bottom Row - Two Containers */}
         <div className="flex w-full h-[15%] space-x-4 mt-4">
           <div className="w-[1000px] h-full">
-          <h2 className='text-4xl font-bold font-subheading bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent'>
-            Best Recommended Properties
-          </h2>
           <PropertyGrid />
           </div>
           <div className="w-1/2 h-[500px] space-x-4 mt-4">
