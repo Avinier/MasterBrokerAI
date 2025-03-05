@@ -6,16 +6,16 @@ import { Building, MapPin, Home, IndianRupee } from "lucide-react"; // Import ic
 import SkuemorphicContainer from "~/components/UI/SkuemorphicContainer";
 
 const clients = [
-  { clientName: "John Doe", location: "New York", type: "Rent", budget: "₹2000/month", bhk: "2 BHK" },
-  { clientName: "Alice Smith", location: "Los Angeles", type: "Purchase", budget: "₹500,000", bhk: "3 BHK" },
-  { clientName: "Bob Johnson", location: "Chicago", type: "Rent", budget: "₹1500/month", bhk: "1 BHK" },
-  { clientName: "Emma Brown", location: "Houston", type: "Purchase", budget: "₹350,000", bhk: "2 BHK" },
-  { clientName: "Michael Lee", location: "Miami", type: "Rent", budget: "₹1800/month", bhk: "Studio" },
-  { clientName: "Sophia Wilson", location: "San Francisco", type: "Purchase", budget: "₹800,000", bhk: "4 BHK" },
-  { clientName: "David White", location: "Seattle", type: "Rent", budget: "₹2200/month", bhk: "3 BHK" },
-  { clientName: "Olivia Miller", location: "Boston", type: "Purchase", budget: "₹600,000", bhk: "3 BHK" },
-  { clientName: "William Davis", location: "Denver", type: "Rent", budget: "₹1700/month", bhk: "2 BHK" },
-  { clientName: "Ethan Martinez", location: "Dallas", type: "Purchase", budget: "₹450,000", bhk: "2 BHK" },
+  { clientName: "Rahul Sharma", location: "Kandivali, Mumbai", type: "Rent", budget: "₹20,000/month", bhk: "2 BHK" },
+  { clientName: "Priya Patel", location: "Andheri, Mumbai", type: "Purchase", budget: "₹1,50,00,000", bhk: "3 BHK" },
+  { clientName: "Aarav Singh", location: "Borivali, Mumbai", type: "Rent", budget: "₹15,000/month", bhk: "1 BHK" },
+  { clientName: "Ananya Gupta", location: "Ghatkopar, Mumbai", type: "Purchase", budget: "₹1,20,00,000", bhk: "2 BHK" },
+  { clientName: "Vihaan Mehta", location: "Malad, Mumbai", type: "Rent", budget: "₹18,000/month", bhk: "Studio" },
+  { clientName: "Isha Reddy", location: "Powai, Mumbai", type: "Purchase", budget: "₹2,00,00,000", bhk: "4 BHK" },
+  { clientName: "Arjun Kumar", location: "Thane, Mumbai", type: "Rent", budget: "₹22,000/month", bhk: "3 BHK" },
+  { clientName: "Saanvi Joshi", location: "Chembur, Mumbai", type: "Purchase", budget: "₹1,80,00,000", bhk: "3 BHK" },
+  { clientName: "Aditya Desai", location: "Dadar, Mumbai", type: "Rent", budget: "₹17,000/month", bhk: "2 BHK" },
+  { clientName: "Anika Choudhary", location: "Vashi, Navi Mumbai", type: "Purchase", budget: "₹1,40,00,000", bhk: "2 BHK" },
 ];
 
 const Dashboard: React.FC = () => {
