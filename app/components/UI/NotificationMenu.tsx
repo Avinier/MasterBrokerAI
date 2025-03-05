@@ -26,8 +26,8 @@ const NotificationMenu = () => {
     <div className="relative" ref={menuRef}>
       {/* Notification Bell Button */}
       <div onClick={toggleMenu} className="cursor-pointer">
-        <SkuemorphicContainer className="w-16 h-16 flex items-center justify-center">
-          <Bell className="text-white w-8 h-8" />
+        <SkuemorphicContainer className="w-12 h-12 flex items-center justify-center">
+          <Bell className="text-white w-6 h-6" />
         </SkuemorphicContainer>
       </div>
 
