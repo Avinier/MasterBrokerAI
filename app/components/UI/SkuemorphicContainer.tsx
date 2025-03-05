@@ -11,7 +11,6 @@ const SkuemorphicContainer: React.FC<SkuemorphicContainerProps> = ({ children, c
       className={`
         relative
         rounded-2xl
-        bg-white/15
         border
         border-white/20
         overflow-hidden

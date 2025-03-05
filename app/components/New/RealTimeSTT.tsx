@@ -1,125 +1,179 @@
 import React, { useState } from 'react';
 import SkuemorphicContainer from "~/components/UI/SkuemorphicContainer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Mic } from "lucide-react";
+import { Phone, StopCircle, PlayCircle } from "lucide-react";
 
 const RealTimeSTT = () => {
+  const [isPhoneClicked, setIsPhoneClicked] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [messages, setMessages] = useState([
-    { id: 1, text: "Hello, how can I help you today?", sender: 'assistant' },
-    { id: 2, text: "I need assistance with my account.", sender: 'user' }
+    { id: 1, text: "Welcome to Mumbai Realty AI. How can I assist you today?", sender: 'assistant' },
+    { id: 2, text: "I'm looking for a 3BHK in South Mumbai with sea view.", sender: 'user' }
   ]);
 
-  const handleRecord = () => {
+  const handlePhoneClick = () => {
+    setIsPhoneClicked(true);
+  };
+
+  const handleStartRecording = () => {
     setIsRecording(true);
   };
 
+  const handleStopRecording = () => {
+    setIsRecording(false);
+  };
+
   return (
-    <SkuemorphicContainer className="w-full h-full flex items-center justify-center">
+    <SkuemorphicContainer className="w-full h-full flex items-center justify-center relative bg-gray-900">
+      {/* Glowing background effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 animate-pulse blur-2xl" />
+      
+      {isPhoneClicked && (
+        <div className="text-center space-y-2 z-10">
+          <h2 className='text-3xl font-bold font-subheading bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent'>
+            Live Conversation Analysis
+          </h2>
+          <p className="text-gray-400 font-subheading">Real-time client communication</p>
+        </div>
+      )}
+
       <AnimatePresence>
-        {!isRecording && (
+        {!isPhoneClicked && (
           <motion.button 
-            onClick={handleRecord}
+            onClick={handlePhoneClick}
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="absolute"
+            className="absolute z-10"
           >
             <motion.div
-              className="relative rounded-full bg-green-400 h-24 w-24 flex items-center justify-center shadow-lg"
+              className="relative rounded-full bg-cyan-500 h-24 w-24 flex items-center justify-center shadow-lg"
               animate={{
                 scale: [1, 1.2, 1],
-                opacity: [0.8, 1, 0.8],
+                boxShadow: [
+                  '0 0 0px rgba(16, 185, 129, 0)',
+                  '0 0 20px rgba(16, 185, 129, 0.6)',
+                  '0 0 40px rgba(16, 185, 129, 0.4)',
+                  '0 0 60px rgba(16, 185, 129, 0.6)',
+                  '0 0 0px rgba(16, 185, 129, 0)'
+                ]
               }}
               transition={{
-                duration: 1.5,
+                duration: 2,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
             >
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 to-green-200 opacity-75 blur-lg animate-pulse"></div>
-              <Mic className="text-portage h-12 w-12 relative" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-75 blur-xl animate-pulse"></div>
+              <Phone className="text-white h-12 w-12 relative z-10" />
             </motion.div>
           </motion.button>
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {isRecording && (
-          <div className="flex flex-col items-start mt-4">
-            {messages.map((message, index) => (
-  <motion.div
-    key={message.id}
-    initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ 
-      duration: 0.4, 
-      type: "spring", 
-      stiffness: 100 
-    }}
-    className={`
-      flex 
-      ${index % 2 === 0 ? 'justify-start' : 'justify-end'}
-      w-full
-      mb-4
-    `}
-  >
-    <div
-      key={message.id}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      className={`
-        relative 
-        max-w-[80%] 
-        rounded-xl 
-        p-4 
-        transition-all 
-        duration-300 
-        ${message.sender === 'assistant' 
-          ? 'bg-gradient-to-br from-[#C552D6] via-[#E98AF0] to-[#F0A8F8]' 
-          : 'bg-gradient-to-br from-[#4AE05A] via-[#8AF096] to-[#B0F5C0]'}
-        text-white 
-        shadow-xl 
-        hover:scale-[1.01] 
-        transform 
-        ease-in-out
-        ${message.sender === 'assistant' 
-          ? 'ring-[#E98AF0] hover:ring-[#FF60F6]' 
-          : 'ring-[#8AF096] hover:ring-[#60FF84]'}
-        font-subheading 
-        tracking-wide 
-        animate-pulse
-      `}
-    >
-      {message.text}
-    </div>
-  </motion.div>
-
-            ))}
-
-            
-          </div>
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {isRecording && (
-          <motion.div
-            className="absolute bottom-0 rounded-full bg-green-400 h-16 w-16 flex items-center justify-center shadow-lg" // Removed mt-4, added absolute bottom-0
-            animate={{
-              y: [0, 'calc(50% - 2rem)'], // Animate downwards to the center, adjusting for icon size
-              scale: [1, 0.8],
-              opacity: [0.8, 1],
-            }}
-            transition={{
-              duration: 0.5, // Reduced duration
-              repeat: 0, // Remove repetition
-              ease: "easeInOut",
-            }}
+      {isPhoneClicked && (
+        <div className="absolute bottom-0 flex space-x-4 mb-8 z-10">
+          <motion.button
+            onClick={handleStartRecording}
+            disabled={isRecording}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className={`
+              relative rounded-full h-12 w-12 flex items-center justify-center shadow-md hover:shadow-lg
+              ${isRecording 
+                ? 'bg-cyan-300 cursor-not-allowed opacity-50' 
+                : 'bg-cyan-500 hover:bg-cyan-600'
+              }
+            `}
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 to-green-200 opacity-75 blur-lg animate-pulse"></div>
-            <Phone className="text-portage h-8 w-8 relative" />
-          </motion.div>
+            <div className={`
+              absolute inset-0 rounded-full 
+              ${isRecording 
+                ? 'bg-cyan-300 opacity-30' 
+                : 'bg-cyan-400 opacity-50 blur-xl animate-pulse'
+              }
+            `}></div>
+            <PlayCircle className={`
+              text-white h-6 w-6 relative z-10
+              ${isRecording ? 'opacity-50' : ''}
+            `} />
+          </motion.button>
+
+          <motion.button
+            onClick={handleStopRecording}
+            disabled={!isRecording}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+            className={`
+              relative rounded-full h-12 w-12 flex items-center justify-center shadow-md hover:shadow-lg
+              ${!isRecording 
+                ? 'bg-emerald-300 cursor-not-allowed opacity-50' 
+                : 'bg-emerald-500 hover:bg-emerald-600'
+              }
+            `}
+          >
+            <div className={`
+              absolute inset-0 rounded-full 
+              ${!isRecording 
+                ? 'bg-emerald-300 opacity-30' 
+                : 'bg-emerald-400 opacity-50 blur-xl animate-pulse'
+              }
+            `}></div>
+            <StopCircle className={`
+              text-white h-6 w-6 relative z-10
+              ${!isRecording ? 'opacity-50' : ''}
+            `} />
+          </motion.button>
+        </div>
+      )}
+
+      <AnimatePresence>
+        {isRecording && (
+          <div className="flex flex-col items-start mt-4 w-full px-4 z-10">
+            {messages.map((message, index) => (
+              <motion.div
+                key={message.id}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ 
+                  duration: 0.4, 
+                  type: "spring", 
+                  stiffness: 100 
+                }}
+                className={`
+                  flex 
+                  ${index % 2 === 0 ? 'justify-start' : 'justify-end'}
+                  w-full
+                  mb-4
+                `}
+              >
+                <div
+                  className={`
+                    relative 
+                    max-w-[80%] 
+                    rounded-xl 
+                    p-4 
+                    transition-all 
+                    duration-300 
+                    ${message.sender === 'assistant' 
+                      ? 'bg-gradient-to-br from-cyan-500 via-emerald-500 to-emerald-400 animate-pulse-glow-cyan' 
+                      : 'bg-gradient-to-br from-gray-700 via-gray-600 to-gray-500'}
+                    text-white 
+                    shadow-xl 
+                    hover:scale-[1.01] 
+                    transform 
+                    ease-in-out
+                    font-subheading 
+                    tracking-wide 
+                  `}
+                >
+                  {message.text}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         )}
       </AnimatePresence>
     </SkuemorphicContainer>

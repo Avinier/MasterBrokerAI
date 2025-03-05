@@ -62,9 +62,9 @@ const ClientNavigationButtons = () => {
                 absolute 
                 inset-0 
                 bg-gradient-to-r 
-                from-[#E98AF0]/50 
-                via-[#8A8FF0]/50 
-                to-[#8AF096]/50 
+                from-[#E0AAFF] 
+                via-[#C0ADFF] 
+                to-[#A0B5FF] 
                 opacity-0 
                 group-hover:opacity-100 
                 transition-opacity 
@@ -147,9 +147,9 @@ const ClientNavigationButtons = () => {
                 absolute 
                 inset-0 
                 bg-gradient-to-r 
-                from-[#8AF096]/50 
-                via-[#E98AF0]/50 
-                to-[#8A8FF0]/50 
+                from-[#E0AAFF] 
+                via-[#C0ADFF] 
+                to-[#A0B5FF] 
                 opacity-0 
                 group-hover:opacity-100 
                 transition-opacity 
