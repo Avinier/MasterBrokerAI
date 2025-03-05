@@ -15,13 +15,6 @@ const NewRoute = () => {
     <div className="flex flex-col bg-gradient-to-br from-purple-900 to-blue-900 relative overflow-hidden min-h-screen">
       {/* Navbar */}
       <Navbar />
-
-      {/* Back Button */}
-      <Link to="/home" className="absolute top-20 left-4 z-10"> {/* Adjusted for Navbar height */}
-        <SkuemorphicContainer className="w-20 h-10 flex items-center justify-center">
-          <ArrowLeft className="w-6 h-6 text-gray-500" />
-        </SkuemorphicContainer>
-      </Link>
       
       {/* Main Content */}
       <div className="px-8 py-6 mt-4">

@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <SkuemorphicContainer className="w-full flex items-center justify-between px-6 py-4">
       {/* Left: Brand Name */}
-      <h1 className="text-white text-2xl font-bold font-tiempos-heading">
+      <h1 className="text-white text-2xl font-bold font-subheading">
         MasterBroker.AI
       </h1>
 
