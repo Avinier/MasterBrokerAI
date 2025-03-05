@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link } from '@remix-run/react';
 import { Plus, Users } from 'lucide-react';
 
 const ClientNavigationButtons = () => {

@@ -45,9 +45,12 @@ const propertyData = [
 
 const PropertyGridItem = ({ bhk, location, estimatedPrice, image }) => {
   return (
-    <SkuemorphicContainer className="w-full h-full flex flex-col items-center justify-center p-4">
+    <SkuemorphicContainer className="w-full h-full flex flex-col items-center justify-center p-4 bg-gray-900 relative overflow-hidden">
+      {/* Yellow glowing background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 animate-pulse blur-lg" />
+      
       <motion.div
-        className="relative rounded-xl bg-blue-400 w-full aspect-video flex items-center justify-center mb-4 overflow-hidden"
+        className="relative rounded-xl bg-yellow-400 w-full aspect-video flex items-center justify-center mb-4 overflow-hidden"
         animate={{
           scale: [1, 1.05, 1],
           opacity: [0.8, 1, 0.8],
@@ -58,7 +61,7 @@ const PropertyGridItem = ({ bhk, location, estimatedPrice, image }) => {
           ease: "easeInOut",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-200 opacity-75 blur-lg"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-200 opacity-75 blur-lg"></div>
         <img 
           src={image} 
           alt="Property" 
@@ -69,10 +72,10 @@ const PropertyGridItem = ({ bhk, location, estimatedPrice, image }) => {
         </div>
       </motion.div>
       
-      <div className="w-full text-white text-center">
-        <h3 className="text-xl font-semibold mb-1">{bhk}</h3>
-        <p className="text-sm opacity-80 mb-1">{location}</p>
-        <p className="text-lg font-bold">{estimatedPrice}</p>
+      <div className="w-full text-white text-center z-10">
+        <h3 className="text-xl font-semibold mb-1 font-subheading">{bhk}</h3>
+        <p className="text-sm opacity-80 mb-1 font-subheading">{location}</p>
+        <p className="text-lg font-bold text-yellow-600 font-subheading">{estimatedPrice}</p>
       </div>
     </SkuemorphicContainer>
   );
