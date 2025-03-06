@@ -67,17 +67,7 @@ const AIGenVoice = () => {
 
       <div className="z-10 w-full max-w-3xl space-y-8">
         <div className="text-center space-y-2">
-          <h2 className='text-4xl font-bold font-subheading bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent'>
-            AI Voice Generation
-          </h2>
-          <p className="text-gray-400 font-subheading">Talk to your clients automatically</p>
-        </div>
-
-        <div className="relative w-full aspect-video bg-gray-800 rounded-2xl border border-purple-500/30 shadow-lg shadow-purple-500/20">
-          <div ref={siriWaveContainer} className="w-full h-full" />
-        </div>
-
-        {/* Play Audio Button */}
+          {/* Play Audio Button */}
         <button
           onClick={handlePlayAudio}
           className=" text-center bg-gradient-to-r from-purple-500 to-blue-500 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-3 px-6 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400 transition-colors duration-300 z-10"
@@ -94,6 +84,17 @@ const AIGenVoice = () => {
           onEnded={() => setIsPlaying(false)}
           onLoadedData={handleAudioLoadedData} // Set audioLoaded to true
         />
+          <h2 className='text-4xl font-bold font-subheading bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent'>
+            AI Voice Generation
+          </h2>
+          <p className="text-gray-400 font-subheading">Talk to your clients automatically</p>
+        </div>
+
+        <div className="relative w-full aspect-video bg-gray-800 rounded-2xl border border-purple-500/30 shadow-lg shadow-purple-500/20">
+          <div ref={siriWaveContainer} className="w-full h-full" />
+        </div>
+
+        
       </div>
     </SkuemorphicContainer>
   );
